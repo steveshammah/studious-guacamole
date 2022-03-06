@@ -20,7 +20,9 @@ const CookesPolicy = () => {
         by remembering your preferences and repeat visits. By clicking “Accept”,
         you consent to the use of ALL the cookies.
       </Text>
-      <Button borderRadius={0}>Accept</Button>
+      <Button onClick={() => setActive(!active)} borderRadius={0}>
+        Accept
+      </Button>
       <Text onClick={() => setActive(!active)}>Close</Text>
     </Box>
   );

@@ -1,8 +1,6 @@
 import {
-  Box,
   Button,
   ButtonGroup,
-  Container,
   Flex,
   FormControl,
   Input,
@@ -12,11 +10,16 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import React, { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase-config";
 
 const LoginForm = () => {
-  const [show, setShow] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const handleClick = () => setShow(!show);
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [show, setShow] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const handleClick = () => void setShow(!show);
   return (
     <Flex
       alignItems={"center"}
@@ -30,7 +33,12 @@ const LoginForm = () => {
           Log in to access your account.
         </Text>
         <InputGroup size="md">
-          <Input placeholder="Username or Email" mb={"5"} borderRadius={0} />
+          <Input
+            placeholder="Username or Email"
+            mb={"5"}
+            borderRadius={0}
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </InputGroup>
         <InputGroup size="md">
           <Input
@@ -38,6 +46,7 @@ const LoginForm = () => {
             type={show ? "text" : "password"}
             placeholder="Enter password"
             borderRadius={0}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <InputRightElement width="4.5rem">
             <Button
