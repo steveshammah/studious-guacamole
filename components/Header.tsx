@@ -1,26 +1,21 @@
-import {
-  Box,
-  Button,
-  Container,
-  Flex,
-  HStack,
-  Spacer,
-  Stack,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
-import Image from "next/image";
+import { Button, Flex, Spacer, Stack, Text } from "@chakra-ui/react";
+// import Image from "next/image";
 import React from "react";
 
 const Header: React.FC = () => {
   return (
     <Flex
       bg={"black"}
-      height="14vh"
-      minW={"100vw"}
+      height="12vh"
+      w={"100vw"}
       alignItems={"center"}
       justifyContent={"center"}
-      color={"whiteAlpha.800"}
+      color={"whiteAlpha.900"}
+      position={"sticky"}
+      top={"0"}
+      left={"0"}
+      zIndex={"999"}
+      borderBottom={"1px"}
     >
       <Stack
         pl={"4"}
@@ -30,13 +25,14 @@ const Header: React.FC = () => {
         overflow={"hidden"}
         cursor={"pointer"}
       >
-        <Image
-          src={"/assets/images/tgc_blue_logo.png"}
-          height={"90%"}
-          width={"100%"}
-          layout={"fixed"}
-          alt={"TGC_Logo"}
-        />
+        <Text
+          textTransform={"uppercase"}
+          fontWeight={"1000"}
+          fontSize={"1.2rem"}
+          letterSpacing={"2px"}
+        >
+          CyberPunk
+        </Text>
       </Stack>
 
       <Spacer />
@@ -45,12 +41,12 @@ const Header: React.FC = () => {
           mr={"2rem"}
           justifyContent={"space-around"}
           fontSize={{ base: "0.8rem", sm: "1rem", md: "1.2rem" }}
-          fontWeight={"500"}
+          fontWeight={"800"}
           p={"2"}
           w={"90%"}
         >
           <Text cursor={"pointer"} mr={"5"}>
-            Youtube
+            Blog
           </Text>
           <Text cursor={"pointer"} mr={"5"}>
             Events
@@ -58,8 +54,8 @@ const Header: React.FC = () => {
           <Text cursor={"pointer"}>About</Text>
         </Flex>
         <Button
-          variant={"outline"}
-          colorScheme={"white"}
+          variant={"solid"}
+          colorScheme={"red"}
           bg={"red"}
           cursor={"pointer"}
         >
@@ -67,7 +63,7 @@ const Header: React.FC = () => {
             fontSize={{ base: "0.6rem", sm: "0.8rem", md: "1rem" }}
             color={"white"}
           >
-            Get notified
+            Download Now
           </Text>{" "}
         </Button>
       </Flex>
