@@ -8,11 +8,10 @@ const Home: NextPage = () => {
   return (
     <Box overflowY={"hidden"}>
       <Head>
-        <title>The Good Network</title>
-        <meta name="description" content="The Good Network" />
+        <title>Cyber Punk</title>
+        <meta name="description" content="Cyper Punk" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
       <LandingSection />
     </Box>
   );

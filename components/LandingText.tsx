@@ -1,6 +1,5 @@
 import {
   Box,
-  Link,
   Text,
   VStack,
   Image as ChakraImage,
@@ -8,6 +7,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import Image from "next/image";
+import Link from "next/link";
 
 import React from "react";
 
@@ -19,7 +19,7 @@ const LandingText = () => {
       flexDir={"column"}
       alignItems={"flex-start"}
       justifyContent={"center"}
-      p={10}
+      p={5}
       h={"100%"}
       bg={"white"}
       color={"black"}
@@ -30,42 +30,49 @@ const LandingText = () => {
         p={5}
         mb={"2"}
         // w={"100%"}
-        h={"50%"}
+        minH={"50%"}
       >
-        <Text fontSize={"2.2rem"} fontWeight={"600"}>
+        <Text
+          fontSize={{ base: "1.6rem", md: "2rem", lg: "2.2rem" }}
+          fontWeight={"600"}
+        >
           Lorem, ipsum dolor sit amet consectetur <br /> adipisicing elit. Natus
           quod ?
         </Text>
         <VStack mt={5}>
-          <Button
-            width={"200px"}
-            h={"50px"}
-            colorScheme={"whiteAlpha"}
-            bg={"red"}
-            variant={"solid"}
-            fontSize={"1.2rem"}
-          >
-            Log in
-          </Button>
+          <Link href="/login" passHref>
+            <Button
+              width={[100, 120, 180]}
+              h={[10, 12, 12]}
+              colorScheme={"red"}
+              bg={"red"}
+              variant={"solid"}
+              fontSize={{ base: "1rem", md: "1rem", lg: "1.2rem" }}
+              borderRadius={0}
+            >
+              Log in
+            </Button>
+          </Link>
+
           <Text>
             Don&apos;t have an account?{" "}
-            <Link href="/signup" textColor={"red"}>
-              Signup
+            <Link href="/signup" passHref>
+              <a>Signup</a>
             </Link>
           </Text>
         </VStack>{" "}
       </VStack>
-      <VStack alignItems={"flex-start"} p={"5"}>
+      <VStack alignItems={"flex-start"} p={"1"}>
         <Text>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</Text>
         <Flex flexWrap={"wrap"}>
           <ChakraImage
-            src={"/assets/images/cyberpunk-12.jpg"}
+            src={"/assets/images/cyberpunk.jpg"}
             height={"7rem"}
             width={"18rem"}
             objectFit={"fill"}
             alt={"Download from the app store"}
-            borderWidth={"2px"}
-            borderRadius={"md"}
+            // borderWidth={"2px"}
+            // borderRadius={"md"}
             mr={"5"}
           />
           <ChakraImage
@@ -74,8 +81,8 @@ const LandingText = () => {
             width={"18rem"}
             objectFit={"fill"}
             alt={"Download from the app store"}
-            borderWidth={"2px"}
-            borderRadius={"md"}
+            // borderWidth={"2px"}
+            // borderRadius={"md"}
           />
         </Flex>
       </VStack>

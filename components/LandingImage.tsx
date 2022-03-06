@@ -1,16 +1,17 @@
-import { Container } from "@chakra-ui/react";
-import Image from "next/image";
+import { Flex } from "@chakra-ui/react";
+
 import React from "react";
 
 const LandingImage = () => {
   return (
-    <Container
-      p={0}
-      flex={1}
-      bg={"blackAlpha.900"}
-      h={"100%"}
-      w={"100%"}
-    ></Container>
+    <Flex flex={2}>
+      {/* eslint-disable-next-line @next/next/no-img-element*/}
+      <img
+        src={"/assets/images/cyberpunk-logo.jpg"}
+        alt={"Cyberpunk Logo"}
+        style={{ objectFit: "fill" }}
+      />
+    </Flex>
   );
 };
 

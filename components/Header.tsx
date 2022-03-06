@@ -1,4 +1,5 @@
 import { Button, Flex, Spacer, Stack, Text } from "@chakra-ui/react";
+import Link from "next/link";
 // import Image from "next/image";
 import React from "react";
 
@@ -25,14 +26,16 @@ const Header: React.FC = () => {
         overflow={"hidden"}
         cursor={"pointer"}
       >
-        <Text
-          textTransform={"uppercase"}
-          fontWeight={"1000"}
-          fontSize={"1.2rem"}
-          letterSpacing={"2px"}
-        >
-          CyberPunk
-        </Text>
+        <Link href={"/"} passHref>
+          <Text
+            textTransform={"uppercase"}
+            fontWeight={"1000"}
+            fontSize={{ base: ".8rem", md: "1.2rem", lg: "1.2rem" }}
+            letterSpacing={"2px"}
+          >
+            CyberPunk
+          </Text>
+        </Link>
       </Stack>
 
       <Spacer />
@@ -58,6 +61,7 @@ const Header: React.FC = () => {
           colorScheme={"red"}
           bg={"red"}
           cursor={"pointer"}
+          borderRadius={"0"}
         >
           <Text
             fontSize={{ base: "0.6rem", sm: "0.8rem", md: "1rem" }}
