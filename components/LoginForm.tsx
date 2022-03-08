@@ -9,17 +9,29 @@ import {
   Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import React, { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase-config";
+import React, { useContext, useEffect, useState } from "react";
+import { googleSignIn, logIn } from "./FirebaseAuth";
+
+import { authContext } from "../contexts/AuthState";
 
 const LoginForm = () => {
-  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [show, setShow] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(false);
+
+  const { checkAuth } = useContext(authContext);
+
+  useEffect(() => {
+    void checkAuth();
+
+    return () => {};
+  }, [checkAuth]);
 
   const handleClick = () => void setShow(!show);
+
+  const handleLogin = (): void => {
+    logIn(email, password);
+  };
   return (
     <Flex
       alignItems={"center"}
@@ -34,10 +46,11 @@ const LoginForm = () => {
         </Text>
         <InputGroup size="md">
           <Input
-            placeholder="Username or Email"
+            placeholder="Email"
             mb={"5"}
             borderRadius={0}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
+            id={"Email"}
           />
         </InputGroup>
         <InputGroup size="md">
@@ -47,6 +60,7 @@ const LoginForm = () => {
             placeholder="Enter password"
             borderRadius={0}
             onChange={(e) => setPassword(e.target.value)}
+            id={"Password"}
           />
           <InputRightElement width="4.5rem">
             <Button
@@ -61,7 +75,6 @@ const LoginForm = () => {
           </InputRightElement>
         </InputGroup>
         <ButtonGroup mt={"5"}>
-          {/* <Link href="/login-auth" passHref> */}
           <Button
             width={"150px"}
             h={"40px"}
@@ -69,13 +82,23 @@ const LoginForm = () => {
             bg={"red"}
             variant={"solid"}
             fontSize={"1.1rem"}
-            isLoading={loading}
-            onClick={() => setLoading(!loading)}
+            onClick={() => handleLogin}
             borderRadius={0}
           >
             Log in
           </Button>
-          {/* </Link> */}
+          <Button
+            width={"150px"}
+            h={"40px"}
+            colorScheme={"red"}
+            bg={"white"}
+            variant={"solid"}
+            fontSize={"1.1rem"}
+            onClick={() => googleSignIn()}
+            borderRadius={0}
+          >
+            Google Sign In
+          </Button>
         </ButtonGroup>
         <Text mt={5}>
           <Link href={"/"}>Forgot password?</Link>

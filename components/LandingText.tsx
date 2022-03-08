@@ -9,9 +9,21 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { authContext } from "../contexts/AuthState";
 
 const LandingText = () => {
+  const [active, setActive] = useState<any>("");
+
+  const { checkAuth } = useContext(authContext);
+
+  useEffect(() => {
+    // void checkAuth();
+    setActive(checkAuth());
+    console.log("User landing: ", active);
+
+    return () => {};
+  }, [active, checkAuth]);
   return (
     <Box
       flex={"2"}
@@ -40,19 +52,35 @@ const LandingText = () => {
           quod ?
         </Text>
         <VStack mt={5}>
-          <Link href="/login" passHref>
-            <Button
-              width={[100, 120, 180]}
-              h={[10, 12, 12]}
-              colorScheme={"red"}
-              bg={"red"}
-              variant={"solid"}
-              fontSize={{ base: "1rem", md: "1rem", lg: "1.2rem" }}
-              borderRadius={0}
-            >
-              Log in
-            </Button>
-          </Link>
+          {active ? (
+            <Link href="/login" passHref>
+              <Button
+                width={[100, 120, 180]}
+                h={[10, 12, 12]}
+                colorScheme={"red"}
+                bg={"red"}
+                variant={"solid"}
+                fontSize={{ base: "1rem", md: "1rem", lg: "1.2rem" }}
+                borderRadius={0}
+              >
+                Log Out
+              </Button>
+            </Link>
+          ) : (
+            <Link href="/login" passHref>
+              <Button
+                width={[100, 120, 180]}
+                h={[10, 12, 12]}
+                colorScheme={"red"}
+                bg={"red"}
+                variant={"solid"}
+                fontSize={{ base: "1rem", md: "1rem", lg: "1.2rem" }}
+                borderRadius={0}
+              >
+                Log in
+              </Button>
+            </Link>
+          )}
 
           <Text>
             Don&apos;t have an account?{" "}
