@@ -1,7 +1,7 @@
 import { Box, Button, Text } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { FC, useState } from "react";
 
-const CookesPolicy = () => {
+const CookesPolicy: FC = () => {
   const [active, setActive] = useState(true);
 
   return (
@@ -20,10 +20,12 @@ const CookesPolicy = () => {
         by remembering your preferences and repeat visits. By clicking “Accept”,
         you consent to the use of ALL the cookies.
       </Text>
-      <Button onClick={() => setActive(!active)} borderRadius={0}>
-        Accept
+      <Button borderRadius={0} onClick={() => setActive(!active)}>
+        Preference
       </Button>
-      <Text onClick={() => setActive(!active)}>Close</Text>
+      <Button borderRadius={0} onClick={() => setActive(!active)}>
+        Accept All
+      </Button>
     </Box>
   );
 };
