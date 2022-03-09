@@ -7,7 +7,8 @@ import {
   Switch,
   Text,
 } from "@chakra-ui/react";
-import { FC } from "react";
+import { FC, useState } from "react";
+import { parseCookies, setCookie, destroyCookie } from "nookies";
 
 interface ICookies {
   type: string;
@@ -15,8 +16,12 @@ interface ICookies {
   isDisabled: boolean;
   defaultChecked: boolean;
 }
-
+interface IUserCookies {
+  type?: string;
+  status?: boolean;
+}
 const CookiesDetails: FC = () => {
+  // const [userCookies, setUserCookies] = useState([{}]);
   const cookies: ICookies[] = [
     {
       type: "Strictly Necessary Cookies",
@@ -48,8 +53,27 @@ const CookiesDetails: FC = () => {
     },
   ];
 
+  const handleClick = (e: any): void => {
+    const type = e.target.value;
+    // const status = e.target.checked;
+    // const selectedCookie: IUserCookies = {
+    //   type,
+    //   status,
+    // };
+
+    setCookie(null, type, type, {
+      maxAge: 30 * 24 * 60 * 60,
+      path: "/",
+    });
+
+    destroyCookie(null, "undefined");
+
+    const cookies = parseCookies();
+    console.log("Cookies", { cookies });
+  };
+
   return (
-    <Accordion cursor={"pointer"}>
+    <Accordion cursor={"pointer"} allowToggle>
       {cookies.map((cookie, index) => {
         return (
           <AccordionItem
@@ -58,10 +82,13 @@ const CookiesDetails: FC = () => {
             justifyContent={"space-between"}
             alignItems={"center"}
             fontSize={"0.9rem"}
-            mb={1}
             key={`cookie-${index}`}
           >
-            <HStack justifyContent={"space-between"} w={"100%"}>
+            <HStack
+              justifyContent={"space-between"}
+              w={"100%"}
+              onClick={handleClick}
+            >
               <AccordionButton>
                 <Text fontWeight={600}>{cookie.type}</Text>
               </AccordionButton>{" "}
@@ -70,6 +97,9 @@ const CookiesDetails: FC = () => {
                 isDisabled={cookie.isDisabled}
                 colorScheme={"red"}
                 ml={1}
+                value={cookie.type}
+                // onClick={handleClick}
+                p={5}
               />
             </HStack>
             <AccordionPanel>{cookie.details}</AccordionPanel>

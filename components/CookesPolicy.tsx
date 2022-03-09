@@ -31,3 +31,4 @@ const CookesPolicy: FC = () => {
 };
 
 export default CookesPolicy;
+

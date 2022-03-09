@@ -10,8 +10,14 @@ import {
 } from "@chakra-ui/react";
 import { FC } from "react";
 import CookiesDetails from "./CookieDetails";
+import { destroyCookie } from "nookies";
 
 const CookiesPreference: FC = () => {
+  const disableAll = () => {
+    destroyCookie(null, "Performance Cookies");
+    destroyCookie(null, "Functional Necessary Cookies");
+    destroyCookie(null, "Targeting Cookies");
+  };
   return (
     <Box
       position={"absolute"}
@@ -56,11 +62,11 @@ const CookiesPreference: FC = () => {
           </Link>
         </Text>
       </Container>
-      <Button colorScheme={"red"} borderRadius={0} m={3}>
+      <Button colorScheme={"red"} bgColor={"red"} borderRadius={0} m={2}>
         Allow All
       </Button>
 
-      <Container mt={5}>
+      <Container mt={0}>
         <Text fontWeight={700} mb={1}>
           Manage Consent Preference
         </Text>
@@ -75,10 +81,15 @@ const CookiesPreference: FC = () => {
           <CookiesDetails />
         </FormControl>
         <ButtonGroup>
-          <Button colorScheme={"red"} borderRadius={0}>
+          <Button
+            colorScheme={"red"}
+            bgColor={"red"}
+            borderRadius={0}
+            onClick={disableAll}
+          >
             Disable All
           </Button>
-          <Button colorScheme={"red"} borderRadius={0}>
+          <Button colorScheme={"red"} bgColor={"red"} borderRadius={0}>
             Confirm My Choices
           </Button>
         </ButtonGroup>
