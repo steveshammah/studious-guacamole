@@ -11,11 +11,11 @@ const AuthState: React.FC = (props) => {
   const checkAuth = () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log("Active User: ", user);
+        // console.log("Active User: ", user);
 
         return user;
       } else {
-        console.log("No active user.");
+        // console.log("No active user.");
         return undefined;
       }
     });

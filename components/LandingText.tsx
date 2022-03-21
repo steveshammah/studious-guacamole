@@ -20,7 +20,7 @@ const LandingText = () => {
   useEffect(() => {
     // void checkAuth();
     setActive(checkAuth());
-    console.log("User landing: ", active);
+    
 
     return () => {};
   }, [active, checkAuth]);

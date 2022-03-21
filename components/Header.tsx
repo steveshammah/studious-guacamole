@@ -1,4 +1,13 @@
-import { Button, Flex, Spacer, Stack, Text } from "@chakra-ui/react";
+import {
+  Button,
+  Flex,
+  HStack,
+  Spacer,
+  Stack,
+  Text,
+  VStack,
+  WrapItem,
+} from "@chakra-ui/react";
 import Link from "next/link";
 // import Image from "next/image";
 import React from "react";
@@ -8,44 +17,38 @@ const Header: React.FC = () => {
     <Flex
       bg={"black"}
       height="12vh"
-      w={"100vw"}
-      alignItems={"center"}
-      justifyContent={"center"}
+      direction="row"
+      align={"center"}
+      justify={"center"}
       color={"whiteAlpha.900"}
       position={"sticky"}
       top={"0"}
       left={"0"}
       zIndex={"999"}
-      borderBottom={"1px"}
+      // spacing="0.5.5rem"
     >
-      <Stack
-        pl={"4"}
-        justifyContent={"center"}
-        w={"12rem"}
-        h={"100%"}
-        overflow={"hidden"}
-        cursor={"pointer"}
+      <Text
+        textTransform={"uppercase"}
+        fontWeight={"1000"}
+        fontSize={{ base: ".8rem", md: "1.2rem", lg: "1.2rem" }}
+        letterSpacing={"2px"}
+        paddingLeft="1rem"
+        cursor="pointer"
       >
         <Link href={"/"} passHref>
-          <Text
-            textTransform={"uppercase"}
-            fontWeight={"1000"}
-            fontSize={{ base: ".8rem", md: "1.2rem", lg: "1.2rem" }}
-            letterSpacing={"2px"}
-          >
-            CyberPunk
-          </Text>
+          CYBERPUNK
         </Link>
-      </Stack>
+      </Text>
+      {/* </Stack> */}
 
       <Spacer />
       <Flex w={["70%", "80%", "50%"]} p={2}>
-        <Flex
-          mr={"2rem"}
-          justifyContent={"space-around"}
+        <Stack
+          direction="row"
+          spacing="1rem"
+          justify="space-around"
           fontSize={{ base: "0.8rem", sm: "1rem", md: "1.2rem" }}
           fontWeight={"800"}
-          p={"2"}
           w={"90%"}
         >
           <Text cursor={"pointer"} mr={"5"}>
@@ -55,19 +58,20 @@ const Header: React.FC = () => {
             Events
           </Text>
           <Text cursor={"pointer"}>About</Text>
-        </Flex>
+        </Stack>
         <Button
-          variant={"solid"}
-          colorScheme={"red"}
-          bg={"red"}
+          variant="outline"
+          colorScheme={"white"}
+          color="red !important"
           cursor={"pointer"}
-          borderRadius={"0"}
+          rounded="4"
+          w={"fit-content"}
         >
           <Text
             fontSize={{ base: "0.6rem", sm: "0.8rem", md: "1rem" }}
-            color={"white"}
+            color={"black"}
           >
-            Download Now
+            Download
           </Text>{" "}
         </Button>
       </Flex>
