@@ -96,7 +96,7 @@ const SignUpForm = () => {
               onClick={() => setShowConf(!showConf)}
               borderRadius={0}
             >
-              {showConf ? "Hide" : "Show"}
+              {showConf ? "Hide " : "Show "}
             </Button>
           </InputRightElement>
         </InputGroup>
@@ -104,9 +104,8 @@ const SignUpForm = () => {
           <Button
             width={"150px"}
             h={"40px"}
-            colorScheme={"red"}
-            bg={"red"}
-            variant={"solid"}
+            colorScheme={"black"}
+            variant={"outline"}
             fontSize={"1.1rem"}
             onClick={handleSignUp}
             borderRadius={0}
@@ -117,11 +116,10 @@ const SignUpForm = () => {
             width={"fit-content"}
             h={"40px"}
             colorScheme={"red"}
-            bg={"black"}
             variant={"solid"}
             fontSize={"1.1rem"}
             onClick={() => googleSignIn()}
-            borderRadius={0}
+            rounded={0}
           >
             Sign Up with Google
           </Button>

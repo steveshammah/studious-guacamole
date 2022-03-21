@@ -11,6 +11,7 @@ import {
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 import { googleSignIn, logIn } from "./FirebaseAuth";
+import { useRouter } from "next/router";
 
 import { authContext } from "../contexts/AuthState";
 
@@ -18,6 +19,8 @@ const LoginForm = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [show, setShow] = useState<boolean>(false);
+
+  const router = useRouter();
 
   const { checkAuth } = useContext(authContext);
 
@@ -29,8 +32,11 @@ const LoginForm = () => {
 
   const handleClick = () => void setShow(!show);
 
-  const handleLogin = (): void => {
+  const handleLogin = () => {
+    console.log("Logging in: ", email, "With password: ", password);
+
     logIn(email, password);
+    // return router.replace("/cookies");
   };
   return (
     <Flex
@@ -51,6 +57,7 @@ const LoginForm = () => {
             borderRadius={0}
             onChange={(e) => setEmail(e.target.value)}
             id={"Email"}
+            data-testid={"input-email-login"}
           />
         </InputGroup>
         <InputGroup size="md">
@@ -61,6 +68,7 @@ const LoginForm = () => {
             borderRadius={0}
             onChange={(e) => setPassword(e.target.value)}
             id={"Password"}
+            data-testid={"input-password-login"}
           />
           <InputRightElement width="4.5rem">
             <Button
@@ -78,12 +86,12 @@ const LoginForm = () => {
           <Button
             width={"150px"}
             h={"40px"}
-            colorScheme={"red"}
-            bg={"red"}
-            variant={"solid"}
+            colorScheme="blackAlpha"
+            variant={"outline"}
             fontSize={"1.1rem"}
-            onClick={() => handleLogin}
-            borderRadius={0}
+            onClick={handleLogin}
+            rounded={0}
+            data-testid={"login-button"}
           >
             Log in
           </Button>
@@ -91,13 +99,13 @@ const LoginForm = () => {
             width={"150px"}
             h={"40px"}
             colorScheme={"red"}
-            bg={"white"}
-            variant={"solid"}
+            variant={"outline"}
             fontSize={"1.1rem"}
             onClick={() => googleSignIn()}
-            borderRadius={0}
+            rounded={0}
+            data-testid={"google-signin-button"}
           >
-            Google Sign In
+            Google Login
           </Button>
         </ButtonGroup>
         <Text mt={5}>
