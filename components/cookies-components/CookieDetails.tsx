@@ -23,6 +23,7 @@ export interface ICDetails {
   sessionCookies: string;
   isOpen: boolean;
   onClose: () => unknown;
+  setVisible: () => any;
 }
 
 export const CookiesDetails: FC<ICDetails> = ({
@@ -30,6 +31,7 @@ export const CookiesDetails: FC<ICDetails> = ({
   isOpen,
   onClose,
   sessionCookies,
+  setVisible,
 }) => {
   const [addCookie, deleteCookie] = useCookie();
 
@@ -48,6 +50,7 @@ export const CookiesDetails: FC<ICDetails> = ({
     if (!sessionCookies) {
       addCookie("default");
     }
+    setVisible(false);
     onClose();
   };
 
