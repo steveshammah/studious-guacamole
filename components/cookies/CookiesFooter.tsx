@@ -7,36 +7,34 @@ import {
   Stack,
   SlideFade,
 } from "@chakra-ui/react";
-import { FC, useEffect } from "react";
+import { useCallback, useEffect } from "react";
+import { ICFooter } from "../CookiesPreference";
 import Cookies from "./cookies.config.json";
+import { useCookie } from "./useCoookie";
 
-interface ICFooter {
-  handleAllCookies: (action: string) => void;
-  onOpen: () => void;
-  sessionCookies: string;
-}
-
-export const CookiesFooter: FC<ICFooter> = ({
-  handleAllCookies,
-  onOpen,
-  sessionCookies,
-}) => {
+export const CookiesFooter = ({ onOpen, sessionCookies }: ICFooter) => {
   const { isOpen, onToggle } = useDisclosure();
+  const { addCookie } = useCookie();
 
-  useEffect(() => {
-    // Check if cookies have been set
-    // Two seconds delay to mount the pop up
+  const toggleFooter = useCallback(() => {
+    // Three seconds delay to mount the pop up
     setTimeout(() => {
+      // Check if cookies have been set
       if (!isOpen && !sessionCookies) {
         onToggle();
       }
-    }, 2000);
+    }, 3000);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleClick = (action?: string) => {
-    if (action) {
-      handleAllCookies(action);
+  useEffect(() => {
+    toggleFooter();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleClick = (details?: string) => {
+    if (details) {
+      addCookie("cookiePolicy", details);
     } else {
       onOpen();
     }

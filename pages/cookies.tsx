@@ -1,79 +1,100 @@
-import { Box, Divider, Heading, Link, Stack, Text } from "@chakra-ui/react";
-import Cookies from "../components/cookies-components/cookies.config.json";
-// import { ICookies } from "./components/CookiesList";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Divider,
+  Heading,
+  Link,
+  Spacer,
+  Stack,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
+import { CookiesDetails } from "../components/cookies/CookieDetails";
+import Cookies from "../components/cookies/cookies.config.json";
+import { ICookies } from "../components/cookies/CookiesList";
+import { CookiesQA } from "../components/cookies/CookiesQA";
 
-export const CookiesPolicy = () => {
+const CookiesPolicy = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const showPopUp = () => {
+    onOpen();
+  };
   return (
     <Stack
       spacing={"1.5rem"}
-      divider={<Divider />}
       alignItems={"flex-start"}
       w={"80%"}
       margin={"auto"}
       p={5}
-      height="100%"
+      lineHeight={"1.8"}
+      letterSpacing={"0.1rem"}
     >
-      <Box>
+      <Stack spacing={"0.75rem"}>
         <Heading
+          as={"h2"}
           fontWeight={900}
-          fontSize={{ base: "1.4rem", md: "1.6rem", lg: "2.2rem" }}
+          fontSize={{ base: "1rem", md: "1.25rem", lg: "1.8rem" }}
         >
           {Cookies.title}
         </Heading>
-        <Text fontSize={{ base: "1rem", md: "1rem", lg: "1.1rem" }}>
-          {Cookies.policy}
+        <Text>{Cookies.policy}</Text>
+        <Spacer height={"1rem"} />
+        <Text>
+          Read our{" "}
+          <Link href="#privacy-policy" fontWeight={600} color="red">
+            privacy policy.
+          </Link>
         </Text>
-      </Box>
-      <Box>
-        <Heading fontWeight={700} fontSize={{ base: "1.4rem", lg: "1.8rem" }}>
-          Cookies
-        </Heading>
-        <Text fontSize={{ base: "1rem", md: "1rem", lg: "1.1rem" }}>
-          {Cookies.about}
-        </Text>
-      </Box>
+      </Stack>
 
-      <Stack spacing="1.2rem">
-        <Heading fontWeight={700} fontSize={{ base: "1.4rem", lg: "1.8rem" }}>
+      <Stack spacing="1rem" divider={<Divider />}>
+        <Heading fontWeight={700} fontSize={{ base: "1.1rem", lg: "1.7rem" }}>
           Categories of Cookies
         </Heading>
-        {Cookies.categories.map((category, index: number) => {
+        {Cookies.categories.map((category: ICookies, index: number) => {
           return (
             <Box
               key={`category-${index}`}
               className={category.url}
               id={category.url}
             >
-              <Text
-                fontSize={{ base: "1.1rem", md: "1rem", lg: "1.1rem" }}
-                fontWeight={600}
-              >
+              <Text fontSize={"1.1rem"} fontWeight={600}>
                 {category.name}
               </Text>
-              <Text fontSize={{ base: "1rem", lg: "1.1rem" }}>
-                {category.details}
-              </Text>
+              <Text>{category.details}</Text>
             </Box>
           );
         })}
       </Stack>
-      <Stack spacing="1.2rem">
-        <Heading fontWeight={700} fontSize={{ base: "1.4rem", lg: "1.8rem" }}>
+      <Stack spacing="1rem">
+        <Heading fontWeight={800} fontSize={{ base: "1.1rem", lg: "1.7rem" }}>
           Managing Cookies
         </Heading>
-        <Text fontSize={{ base: "1rem", lg: "1.1rem" }}>
-          {Cookies.managing.details}
-        </Text>
-        <Text fontSize={{ base: "1rem", lg: "1.1rem" }}>
-          {Cookies.managing.disclaimer}
-        </Text>
-        <Box fontWeight={600}>
-          <Text>
+        <Text>{Cookies.managing.details}</Text>
+        <Text>{Cookies.managing.disclaimer}</Text>
+        <ButtonGroup>
+          <Button
+            colorScheme={"red"}
+            variant="solid"
+            size={"sm"}
+            rounded={2}
+            onClick={showPopUp}
+          >
+            My Cookies
+          </Button>
+        </ButtonGroup>
+
+        {/* <CookiesTable /> */}
+        <Spacer height={"10rem"} />
+        <CookiesQA />
+        <Box>
+          <Text letterSpacing={"1px"}>
             More Information about cookies:{" "}
             <Link
               href={`https://${Cookies.managing.more_info}`}
               target="_blank"
-              color={"red.500"}
+              color={"red"}
             >
               {Cookies.managing.more_info}
             </Link>{" "}
@@ -83,7 +104,7 @@ export const CookiesPolicy = () => {
             <Link
               href={`https://${Cookies.managing.advertising}`}
               target="_blank"
-              color={"red.500"}
+              color={"red"}
             >
               {Cookies.managing.advertising}
             </Link>{" "}
@@ -93,13 +114,19 @@ export const CookiesPolicy = () => {
             <Link
               href={`https://${Cookies.managing.google_analytics}`}
               target="_blank"
-              color={"red.500"}
+              color={"red"}
             >
               {Cookies.managing.google_analytics}
             </Link>{" "}
           </Text>
         </Box>
       </Stack>
+      {/* Cookie Prompt */}
+      <CookiesDetails
+        isOpen={isOpen}
+        onClose={onClose}
+        policyKey={"cookiePolicy"}
+      />
     </Stack>
   );
 };

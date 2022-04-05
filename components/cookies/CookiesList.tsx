@@ -22,7 +22,7 @@ export interface ICookies {
   url: string;
 }
 
-const CookiesList: FC<{ handleClick: (event: any) => void }> = ({
+export const CookiesList: FC<{ handleClick: (event: any) => void }> = ({
   handleClick,
 }) => {
   const [expanded, setExpanded] = useState("");
@@ -60,7 +60,6 @@ const CookiesList: FC<{ handleClick: (event: any) => void }> = ({
               <Stack w="full" direction="row" justifyContent={"space-between"}>
                 <Stack align="center" direction="row" spacing="0.5rem">
                   <Text>{cookie.name}</Text>
-                  <Text>{/* <FaQuestionCircle /> */}</Text>
                 </Stack>
                 {cookie.defaultChecked && (
                   <Stack align="center" spacing="1rem">
@@ -72,7 +71,6 @@ const CookiesList: FC<{ handleClick: (event: any) => void }> = ({
                       value={cookie.type}
                       onChange={handleClick}
                     />
-                    {/* {expanded === cookie.type ? <FaAngleUp /> : <FaAngleDown />} */}
                   </Stack>
                 )}
                 {!cookie.defaultChecked && (
@@ -83,7 +81,6 @@ const CookiesList: FC<{ handleClick: (event: any) => void }> = ({
                       value={cookie.type}
                       onChange={handleClick}
                     />
-                    {/* {expanded === cookie.type ? <FaAngleUp /> : <FaAngleDown />} */}
                   </Stack>
                 )}
               </Stack>
@@ -93,7 +90,7 @@ const CookiesList: FC<{ handleClick: (event: any) => void }> = ({
               <Stack spacing="0.5rem">
                 <Text>{cookie.details}</Text>
 
-                <Link href={`/cookies/#${cookie.url}`} color={"red.700"}>
+                <Link href={`/cookies/#${cookie.url}`} color={"red"}>
                   Cookie details
                 </Link>
               </Stack>
@@ -104,5 +101,3 @@ const CookiesList: FC<{ handleClick: (event: any) => void }> = ({
     </Accordion>
   );
 };
-
-export default CookiesList;

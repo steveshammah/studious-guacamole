@@ -2,6 +2,22 @@
   "title": "Cyber Punk Cookies Policy",
   "policy": "Please read this cookie policy carefully as it contains important information on who we are and how we use cookies on our website. This policy should be read together with our privacy policy which sets out how and why we collect, store, use and share personal information generally, as well as your rights in relation to your personal information and details of how to contact us and supervisory authorities if you have a complaint.",
   "about": "A cookie is a small text file that our sites store on your computer or mobile device when you visit our websites. Our websites, apps and other services (“Sites”), send this data to your browser when you first request a web page and then store the data on your computer or other device so the website or app can access, store or collect information from your device when you first request a web page. Browsers support cookies and similar technologies (such as local storage and pixels) so that our websites can remember information about your visit and can use the information to improve your experience and to create aggregated anonymized statistics about usage of the site. In this Policy, we use the term “cookie” to refer both to cookies and similar technologies.",
+
+  "QA": [
+    {
+      "title": "What are cookies",
+      "answer": "A cookie is a small text file that our sites store on your computer or mobile device when you visit our websites. Our websites, apps and other services (“Sites”), send this data to your browser when you first request a web page and then store the data on your computer or other device so the website or app can access, store or collect information from your device when you first request a web page. Browsers support cookies and similar technologies (such as local storage and pixels) so that our websites can remember information about your visit and can use the information to improve your experience and to create aggregated anonymized statistics about usage of the site. In this Policy, we use the term “cookie” to refer both to cookies and similar technologies."
+    },
+    {
+      "title": "Why We use Cookies",
+      "answer": "We use cookies to learn how you interact with our content and to improve your experience when visiting our website(s). Additionally, cookies allow us to serve you specific content. We may employ the learnings of your behavior on our website(s) to serve you with targeted advertisements on third-party website(s) in an effort to “re-market” our products and services to you. What types of cookies do we use?"
+    },
+    {
+      "title": "Reject All Cookies",
+      "answer": "You can choose to reject or block all or specific types of cookies set by virtue of your visit to our website by clicking on the cookie preferences on our website(s). You can change your preferences for our websites and/or the websites of any third party suppliers by changing your browser settings. Please note that most browsers automatically accept cookies. Therefore, if you do not wish cookies to be used, you may need to actively delete or block the cookies. If you reject the use of cookies, you will still be able to visit our websites but some of the functions may not work correctly. By using our website without deleting or rejecting some or all cookies, you agree that we can place those cookies that you have not deleted or rejected on your device."
+    }
+  ],
+
   "footer": "We use cookies on our website to give you the most relevant experience by remembering your preferences and repeat visits. By clicking “Accept”, you consent to the use of ALL the cookies.",
   "privacy": "Click on the different category headings to find out more and change our default settings. However, blocking some types of cookies may impact your experience of the site and the services we are able to offer.",
   "categories": [

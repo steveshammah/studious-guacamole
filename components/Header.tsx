@@ -1,18 +1,9 @@
-import {
-  Button,
-  Flex,
-  HStack,
-  Spacer,
-  Stack,
-  Text,
-  VStack,
-  WrapItem,
-} from "@chakra-ui/react";
+import { Button, Flex, Spacer, Stack, Text } from "@chakra-ui/react";
 import Link from "next/link";
-// import Image from "next/image";
-import React from "react";
 
-const Header: React.FC = () => {
+import { FC } from "react";
+
+const Header: FC = () => {
   return (
     <Flex
       bg={"black"}
@@ -25,7 +16,6 @@ const Header: React.FC = () => {
       top={"0"}
       left={"0"}
       zIndex={"999"}
-      // spacing="0.5.5rem"
     >
       <Text
         textTransform={"uppercase"}
@@ -39,7 +29,6 @@ const Header: React.FC = () => {
           CYBERPUNK
         </Link>
       </Text>
-      {/* </Stack> */}
 
       <Spacer />
       <Flex w={["70%", "80%", "50%"]} p={2}>
@@ -60,16 +49,15 @@ const Header: React.FC = () => {
           <Text cursor={"pointer"}>About</Text>
         </Stack>
         <Button
-          variant="outline"
-          colorScheme={"white"}
-          color="red !important"
+          variant="solid"
+          colorScheme={"red"}
           cursor={"pointer"}
-          rounded="4"
+          rounded="2"
           w={"fit-content"}
         >
           <Text
             fontSize={{ base: "0.6rem", sm: "0.8rem", md: "1rem" }}
-            color={"black"}
+            color={"white"}
           >
             Download
           </Text>{" "}
