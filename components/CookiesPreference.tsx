@@ -15,11 +15,10 @@ export interface ICFooter {
   sessionCookies: string;
 }
 
-export type TPolicyKey = "cookiePolicy";
+export type TPolicyKey = "Cyber Cookies";
 
-export const CookiesPreference = ({
-  policyKey = "Cyber Cookies",
-}: TPolicyKey) => {
+export const CookiesPreference = () => {
+  const policyKey: TPolicyKey = "Cyber Cookies";
   // Values update the cookie footer state only
   const { isOpen, onOpen, onClose } = useDisclosure();
 

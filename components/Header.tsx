@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { FC } from "react";
 
-const Header: FC = () => {
+export const Header: FC = () => {
   return (
     <Flex
       bg={"black"}
@@ -67,4 +67,4 @@ const Header: FC = () => {
   );
 };
 
-export default Header;
+

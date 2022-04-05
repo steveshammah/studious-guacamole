@@ -1,0 +1,21 @@
+.card {
+  border: 1px solid black;
+}
+
+.card-sm {
+  height: 200px;
+  width: 200px;
+}
+.card-md {
+  height: 500px;
+  width: 500px;
+}
+.card-lg {
+  height: 800px;
+  width: 800px;
+}
+
+.card-xl {
+  height: 1000px;
+  width: 1000px;
+}
